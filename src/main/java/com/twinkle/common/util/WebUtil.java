@@ -13,19 +13,17 @@ import java.util.Iterator;
 import java.util.Map;
 
 /**
- * 
- * ClassName: Web工具类 <br/>
- * date: 2016年7月5日 下午2:44:29 <br/>
- * 
- * @author ZHUANGWEILIANG1
- * @version
+ * description: Web工具类
+ *
+ * @author ：King
+ * @date ：2019/1/13 10:26
  */
-public final class WebUtils {
+public final class WebUtil {
 
-	private static final Logger logger = LoggerFactory.getLogger(WebUtils.class);
+	private static final Logger logger = LoggerFactory.getLogger(WebUtil.class);
 
 	// 让工具类彻底不可以实例化
-	private WebUtils() {
+	private WebUtil() {
 		throw new Error("工具类不可以实例化！");
 	}
 

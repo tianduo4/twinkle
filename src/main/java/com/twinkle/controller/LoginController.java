@@ -1,7 +1,8 @@
 package com.twinkle.controller;
 
-import com.twinkle.common.rest.ApiResponse;
 import com.twinkle.common.authentication.util.SessionUserUtil;
+import com.twinkle.common.cache.RedisTemplate;
+import com.twinkle.common.rest.ApiResponse;
 import com.twinkle.common.validator.TwinkleValidator;
 import com.twinkle.user.repository.model.User;
 import com.twinkle.user.repository.service.UserService;
@@ -30,6 +31,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class LoginController {
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     @ApiOperation(value = "手机密码登录", notes = "手机密码登录接口")
     @ApiImplicitParams({
@@ -69,6 +73,7 @@ public class LoginController {
                 log.error("登录出错！", ex);
                 return ApiResponse.fail("登录出错。");
             }
+            redisTemplate.set("test","king",2000);
             return ApiResponse.ok(SessionUserUtil.getShiroUser());
         }
     }
